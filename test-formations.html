@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест формирований</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .formation-card { border: 1px solid #ccc; padding: 10px; margin: 10px 0; border-radius: 5px; }
+        .metric { margin: 5px 0; }
+    </style>
+</head>
+<body>
+    <h1>Тест загрузки данных формирований</h1>
+
+    <div id="test-output">
+        <p>Загрузка данных...</p>
+    </div>
+
+    <script src="js/data-processor.js"></script>
+    <script>
+        async function testFormations() {
+            console.log('Starting test...');
+
+            if (typeof DataProcessor === 'undefined') {
+                document.getElementById('test-output').innerHTML = '<p style="color: red;">DataProcessor не найден!</p>';
+                return;
+            }
+
+            try {
+                const processor = new DataProcessor();
+                const data = await processor.processAllData();
+
+                console.log('Test data:', data);
+
+                if (data && data.formationsComparison) {
+                    let output = '<h2>Данные загружены успешно!</h2>';
+
+                    output += '<h3>Фронты:</h3>';
+                    data.formationsComparison.fronts.forEach(front => {
+                        output += `<div class="formation-card">
+                            <strong>${front.name}</strong><br>
+                            <div class="metric">Дни: ${front.days}</div>
+                            <div class="metric">Раненые: ${front.wounded}</div>
+                            <div class="metric">Санитарные потери: ${front.sanitaryPercent}%</div>
+                            <div class="metric">Возврат: ${front.returnRate}%</div>
+                        </div>`;
+                    });
+
+                    output += '<h3>Армии:</h3>';
+                    data.formationsComparison.armies.forEach(army => {
+                        output += `<div class="formation-card">
+                            <strong>${army.name}</strong><br>
+                            <div class="metric">Дни: ${army.days}</div>
+                            <div class="metric">Раненые: ${army.wounded}</div>
+                            <div class="metric">Санитарные потери: ${army.sanitaryPercent}%</div>
+                            <div class="metric">Возврат: ${army.returnRate}%</div>
+                        </div>`;
+                    });
+
+                    output += '<h3>Флоты:</h3>';
+                    data.formationsComparison.fleets.forEach(fleet => {
+                        output += `<div class="formation-card">
+                            <strong>${fleet.name}</strong><br>
+                            <div class="metric">Дни: ${fleet.days}</div>
+                            <div class="metric">Раненые: ${fleet.wounded}</div>
+                            <div class="metric">Санитарные потери: ${fleet.sanitaryPercent}%</div>
+                            <div class="metric">Возврат: ${fleet.returnRate}%</div>
+                        </div>`;
+                    });
+
+                    document.getElementById('test-output').innerHTML = output;
+                } else {
+                    document.getElementById('test-output').innerHTML = '<p style="color: red;">Данные формирований не найдены!</p>';
+                }
+            } catch (error) {
+                console.error('Test error:', error);
+                document.getElementById('test-output').innerHTML = `<p style="color: red;">Ошибка: ${error.message}</p>`;
+            }
+        }
+
+        // Запускаем тест при загрузке страницы
+        window.addEventListener('load', testFormations);
+    </script>
+</body>
+</html>

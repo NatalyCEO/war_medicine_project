@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test CSV Loading</title>
+</head>
+<body>
+    <h1>Testing CSV Loading</h1>
+    <div id="output"></div>
+
+    <script src="js/csv-data-loader.js"></script>
+    <script>
+        async function testCSV() {
+            const output = document.getElementById('output');
+
+            try {
+                output.innerHTML = 'Loading CSV data...<br>';
+
+                if (typeof CSVDataLoader === 'undefined') {
+                    output.innerHTML += 'ERROR: CSVDataLoader not loaded<br>';
+                    return;
+                }
+
+                output.innerHTML += 'CSVDataLoader loaded, calling loadAllData...<br>';
+
+                const loader = new CSVDataLoader();
+                const units = await loader.loadAllData();
+
+                output.innerHTML += `Loaded ${units.length} units<br>`;
+                output.innerHTML += `First 3 units:<br>`;
+                units.slice(0, 3).forEach((unit, i) => {
+                    output.innerHTML += `${i + 1}. ${unit.name} (${unit.type}): ${unit.days} дней, ${unit.totalLosses} потерь<br>`;
+                });
+
+            } catch (error) {
+                output.innerHTML += `ERROR: ${error.message}<br>`;
+                console.error(error);
+            }
+        }
+
+        // Run test after scripts load
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', testCSV);
+        } else {
+            testCSV();
+        }
+    </script>
+</body>
+</html>

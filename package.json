@@ -1,0 +1,13 @@
+{
+  "name": "war-medicine-memory",
+  "version": "1.0.0",
+  "description": "Interactive visualization of medical service role in WWII",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": ["wwii", "medicine", "visualization", "history"],
+  "author": "",
+  "license": "MIT"
+}

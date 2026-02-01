@@ -200,18 +200,51 @@ function fallbackShare(url) {
     });
 }
 
+// Year accordion functionality
+function initYearAccordion() {
+    const yearHeaders = document.querySelectorAll('.year-header');
+
+    yearHeaders.forEach(header => {
+        header.addEventListener('click', function() {
+            const yearItem = this.parentElement;
+            const yearContent = yearItem.querySelector('.year-content');
+            const toggle = this.querySelector('.year-toggle');
+
+            // Close all other items
+            document.querySelectorAll('.year-item').forEach(item => {
+                if (item !== yearItem) {
+                    item.classList.remove('active');
+                    const otherToggle = item.querySelector('.year-toggle');
+                    if (otherToggle) otherToggle.textContent = '▶';
+                }
+            });
+
+            // Toggle current item
+            const isActive = yearItem.classList.contains('active');
+            yearItem.classList.toggle('active');
+
+            if (isActive) {
+                toggle.textContent = '▶';
+            } else {
+                toggle.textContent = '▼';
+            }
+        });
+    });
+}
+
 // Initialize app when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM loaded, initializing app...');
-    
+
     try {
         window.app = new WarMedicineApp();
         console.log('App initialized successfully');
     } catch (error) {
         console.error('Error initializing app:', error);
     }
-    
+
     initHeroCounters();
+    initYearAccordion();
 });
 
 function initHeroCounters() {

@@ -1258,151 +1258,198 @@
             <div class="container">
                 <h2>Как менялась <span class="accent">война</span> год от года</h2>
                 <p class="section-subtitle">1941-й и 1945-й — это две разные войны. Увидьте, как менялась структура потерь, свидетельствуя об улучшении тактики, снабжения и работы медиков</p>
-                
-                <div class="dynamics-controls">
-                    <div class="control-group">
-                        <label>Фронт:</label>
-                        <select id="front-select">
-                            <option value="all">Все фронты</option>
-                            <option value="western">Западный фронт</option>
-                            <option value="leningrad">Ленинградский фронт</option>
-                            <option value="southwestern">Юго-Западный фронт</option>
-                            <option value="ukrainian">1-й Украинский</option>
-                        </select>
-                    </div>
+
+                <!-- Yearly Losses Charts -->
+                <div class="yearly-losses-charts">
+                    <!-- Charts will be generated here by JavaScript -->
                 </div>
-                
-                <div class="chart-container">
-                    <div class="chart-legend">
-                        <div class="legend-item">
-                            <div class="legend-color" style="background: #8B0000"></div>
-                            <span>Убитые</span>
+
+                <!-- Year accordion -->
+
+                <div class="year-accordion">
+                    <div class="year-item active" data-year="1941">
+                        <div class="year-header">
+                            <h3>1941: Трагедия начала войны</h3>
+                            <div class="year-toggle">▼</div>
                         </div>
-                        <div class="legend-item">
-                            <div class="legend-color" style="background: #FF6B35"></div>
-                            <span>Раненые</span>
+                        <div class="year-content">
+                        <div class="year-description">
+                            <p>Высокий процент пропавших без вести и попавших в плен (49.2%) свидетельствует о катастрофических окружениях первых месяцев войны. Доля раненых составила 32.2% - многие не успевали получить медицинскую помощь.</p>
                         </div>
-                        <div class="legend-item">
-                            <div class="legend-color" style="background: #696969"></div>
-                            <span>Пропавшие без вести</span>
-                        </div>
-                    </div>
-                    
-                    <div class="chart-wrapper">
-                        <div class="chart-bars" id="stacked-chart">
-                            <!-- 1941 -->
-                            <div class="year-column">
-                                <div class="year-label">1941</div>
-                                <div class="bar-stack">
-                                    <div class="bar-segment killed" style="height: 15%" title="Убитые: 385,221">
-                                        <span class="segment-value">385K</span>
-                                    </div>
-                                    <div class="bar-segment missing" style="height: 50%" title="Пропавшие: 1,204,583">
-                                        <span class="segment-value">1.2M</span>
-                                    </div>
-                                    <div class="bar-segment wounded" style="height: 35%" title="Раненые: 892,345">
-                                        <span class="segment-value">892K</span>
+                        <div class="year-infographics">
+                            <div class="infographic-grid">
+                                <div class="infographic-card">
+                                    <div class="infographic-data">
+                                        <div class="infographic-number">1,700,099</div>
+                                        <div class="infographic-label">Попавшие в плен и пропавшие без вести</div>
+                                        <div class="infographic-percent">49.2%</div>
                                     </div>
                                 </div>
-                            </div>
-                            
-                            <!-- 1942 -->
-                            <div class="year-column">
-                                <div class="year-label">1942</div>
-                                <div class="bar-stack">
-                                    <div class="bar-segment killed" style="height: 25%" title="Убитые: 684,532">
-                                        <span class="segment-value">685K</span>
-                                    </div>
-                                    <div class="bar-segment missing" style="height: 20%" title="Пропавшие: 452,187">
-                                        <span class="segment-value">452K</span>
-                                    </div>
-                                    <div class="bar-segment wounded" style="height: 55%" title="Раненые: 1,567,843">
-                                        <span class="segment-value">1.6M</span>
+                                <div class="infographic-card">
+                                    <div class="infographic-data">
+                                        <div class="infographic-number">1,112,892</div>
+                                        <div class="infographic-label">Раненые</div>
+                                        <div class="infographic-percent">32.2%</div>
                                     </div>
                                 </div>
-                            </div>
-                            
-                            <!-- 1943 -->
-                            <div class="year-column">
-                                <div class="year-label">1943</div>
-                                <div class="bar-stack">
-                                    <div class="bar-segment killed" style="height: 28%" title="Убитые: 725,643">
-                                        <span class="segment-value">726K</span>
-                                    </div>
-                                    <div class="bar-segment missing" style="height: 5%" title="Пропавшие: 89,234">
-                                        <span class="segment-value">89K</span>
-                                    </div>
-                                    <div class="bar-segment wounded" style="height: 67%" title="Раненые: 1,845,672">
-                                        <span class="segment-value">1.8M</span>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- 1944 -->
-                            <div class="year-column">
-                                <div class="year-label">1944</div>
-                                <div class="bar-stack">
-                                    <div class="bar-segment killed" style="height: 25%" title="Убитые: 623,421">
-                                        <span class="segment-value">623K</span>
-                                    </div>
-                                    <div class="bar-segment missing" style="height: 2%" title="Пропавшие: 15,432">
-                                        <span class="segment-value">15K</span>
-                                    </div>
-                                    <div class="bar-segment wounded" style="height: 73%" title="Раненые: 1,754,321">
-                                        <span class="segment-value">1.8M</span>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- 1945 -->
-                            <div class="year-column">
-                                <div class="year-label">1945</div>
-                                <div class="bar-stack">
-                                    <div class="bar-segment killed" style="height: 20%" title="Убитые: 234,567">
-                                        <span class="segment-value">235K</span>
-                                    </div>
-                                    <div class="bar-segment missing" style="height: 1%" title="Пропавшие: 5,432">
-                                        <span class="segment-value">5K</span>
-                                    </div>
-                                    <div class="bar-segment wounded" style="height: 79%" title="Раненые: 987,654">
-                                        <span class="segment-value">988K</span>
+                                <div class="infographic-card">
+                                    <div class="infographic-data">
+                                        <div class="infographic-number">391,359</div>
+                                        <div class="infographic-label">Убитые</div>
+                                        <div class="infographic-percent">11.3%</div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    
-                    <div class="chart-axis">
-                        <div class="y-axis">
-                            <div class="axis-label">2.0M</div>
-                            <div class="axis-label">1.5M</div>
-                            <div class="axis-label">1.0M</div>
-                            <div class="axis-label">0.5M</div>
-                            <div class="axis-label">0</div>
                         </div>
                     </div>
-                </div>
-                
-                <div class="dynamics-insights">
-                    <div class="insight active" data-year="1941">
-                        <h3>1941: Трагедия начала войны</h3>
-                        <p>Высокий процент пропавших без вести (50%) свидетельствует о катастрофических окружениях первых месяцев войны. Низкая доля раненых - многие не успевали получить помощь.</p>
+                    <div class="year-item" data-year="1942">
+                        <div class="year-header">
+                            <h3>1942: Стабилизация фронта</h3>
+                            <div class="year-toggle">▶</div>
+                        </div>
+                        <div class="year-content">
+                        <div class="year-description">
+                            <p>Рост погибших до 19.7% - продолжаются тяжелые оборонительные бои. Система эвакуации работает, но небоевые потери минимальны.</p>
+                        </div>
+                        <div class="year-infographics">
+                            <div class="infographic-grid">
+                                <div class="infographic-card">
+                                    <div class="infographic-data">
+                                        <div class="infographic-number">1,251,891</div>
+                                        <div class="infographic-label">Пропавшие без вести</div>
+                                        <div class="infographic-percent">18.9%</div>
+                                    </div>
+                                </div>
+                                <div class="infographic-card">
+                                    <div class="infographic-data">
+                                        <div class="infographic-number">552,243</div>
+                                        <div class="infographic-label">Заболевшие</div>
+                                        <div class="infographic-percent">8.4%</div>
+                                    </div>
+                                </div>
+                                <div class="infographic-card">
+                                    <div class="infographic-data">
+                                        <div class="infographic-number">1,304,277</div>
+                                        <div class="infographic-label">Убитые</div>
+                                        <div class="infographic-percent">19.7%</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
                     </div>
-                    <div class="insight" data-year="1942">
-                        <h3>1942: Стабилизация фронта</h3>
-                        <p>Уменьшение доли пропавших без вести, рост числа раненых - система эвакуации начинает работать эффективнее, фронт стабилизируется.</p>
+                    <div class="year-item" data-year="1943">
+                        <div class="year-header">
+                            <h3>1943: Коренной перелом</h3>
+                            <div class="year-toggle">▶</div>
+                        </div>
+                        <div class="year-content">
+                        <div class="year-description">
+                            <p>Рост раненых до 61.5% - суровые условия, ожесточенные бои. Небоевые потери менее 1% - медицина эффективно работает.</p>
+                        </div>
+                        <div class="year-infographics">
+                            <div class="infographic-grid">
+                                <div class="infographic-card">
+                                    <div class="infographic-data">
+                                        <div class="infographic-number">4,601,745</div>
+                                        <div class="infographic-label">Раненые</div>
+                                        <div class="infographic-percent">61.5%</div>
+                                    </div>
+                                </div>
+                                <div class="infographic-card">
+                                    <div class="infographic-data">
+                                        <div class="infographic-number">1,559,962</div>
+                                        <div class="infographic-label">Убитые</div>
+                                        <div class="infographic-percent">20.8%</div>
+                                    </div>
+                                </div>
+                                <div class="infographic-card">
+                                    <div class="infographic-data">
+                                        <div class="infographic-number">346,548</div>
+                                        <div class="infographic-label">Пропавшие без вести</div>
+                                        <div class="infographic-percent">4.6%</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
                     </div>
-                    <div class="insight" data-year="1943">
-                        <h3>1943: Коренной перелом</h3>
-                        <p>Резкое снижение пропавших без вести до 5%. Армия переходит в наступление, медицина работает на полную мощность - 67% потерь составляют раненые.</p>
+                    <div class="year-item" data-year="1944">
+                        <div class="year-header">
+                            <h3>1944: Наступление</h3>
+                            <div class="year-toggle">▶</div>
+                        </div>
+                        <div class="year-content">
+                            <div class="year-description">
+                                <p>По-прежнему большое число раненых и контуженных 60.5% - ведутся активные наступательные операции. Безвозвратные потери составляют 21.5% - медицина работает очень эффективно.</p>
+                            </div>
+                            <div class="year-infographics">
+                                <div class="infographic-grid">
+                                    <div class="infographic-card">
+                                        <div class="infographic-data">
+                                            <div class="infographic-number">155,707</div>
+                                            <div class="infographic-label">Пропавшие без вести</div>
+                                            <div class="infographic-percent">2.3%</div>
+                                        </div>
+                                    </div>
+                                    <div class="infographic-card">
+                                        <div class="infographic-data">
+                                            <div class="infographic-number">3,966,814</div>
+                                            <div class="infographic-label">Раненые</div>
+                                            <div class="infographic-percent">60.5%</div>
+                                        </div>
+                                    </div>
+                                    <div class="infographic-card">
+                                        <div class="infographic-data">
+                                            <div class="infographic-number">1,204,170</div>
+                                            <div class="infographic-label">Убитые</div>
+                                            <div class="infographic-percent">18.4%</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="insight" data-year="1944">
-                        <h3>1944: Наступление</h3>
-                        <p>Доля раненых достигает 73% - армия наступает, окружает противника, система эвакуации работает идеально.</p>
-                    </div>
-                    <div class="insight" data-year="1945">
-                        <h3>1945: Завершение войны</h3>
-                        <p>79% потерь - раненые. Пропавшие без вести - всего 1%. Армия-победительница, идеально отлаженная медицинская служба.</p>
+                    <div class="year-item" data-year="1945">
+                        <div class="year-header">
+                            <h3>1945: Завершение войны</h3>
+                            <div class="year-toggle">▶</div>
+                        </div>
+                        <div class="year-content">
+                            <div class="year-description">
+                                <p>Рост раненых до 64.5% - финальные бои за Берлин и Прагу. Санитарные потери составляют 77.9% - максимальная нагрузка на медицинскую службу.</p>
+                            </div>
+                            <div class="year-infographics">
+                                <div class="infographic-grid">
+                                    <div class="infographic-card">
+                                        <div class="infographic-data">
+                                            <div class="infographic-number">559,417</div>
+                                            <div class="infographic-label">Убитые</div>
+                                            <div class="infographic-percent">19.2%</div>
+                                        </div>
+                                    </div>
+                                    <div class="infographic-card">
+                                        <div class="infographic-data">
+                                            <div class="infographic-number">1,874,973</div>
+                                            <div class="infographic-label">Раненые</div>
+                                            <div class="infographic-percent">64.5%</div>
+                                        </div>
+                                    </div>
+                                    <div class="infographic-card">
+                                        <div class="infographic-data">
+                                            <div class="infographic-number">665,076</div>
+                                            <div class="infographic-label">Заболевшие</div>
+                                            <div class="infographic-percent">22.9%</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="year-medicine-development">
+                                <h4>Развитие медицинской службы в 1945 году</h4>
+                                <p>Апогей развития советской военной медицины. Идеально отлаженная система эвакуации и лечения. Широкое применение антибиотиков, переливания крови и современных методов хирургии. Минимальные потери от небоевых причин.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1414,246 +1461,175 @@
             background: #f8f9fa;
         }
 
-        .dynamics-controls {
-            display: flex;
-            gap: 40px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-            background: white;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-        }
-
-        .control-group {
+        .year-accordion {
             display: flex;
             flex-direction: column;
-            gap: 10px;
-        }
-
-        .control-group label {
-            font-weight: 600;
-            color: #1a1a2e;
-            margin-bottom: 5px;
-        }
-
-        #front-select {
-            padding: 8px 16px;
-            border: 2px solid #e9ecef;
-            border-radius: 8px;
-            background: white;
-            font-size: 1em;
-            min-width: 200px;
-            transition: border-color 0.3s ease;
-        }
-
-        #front-select:focus {
-            outline: none;
-            border-color: #ff6b35;
-        }
-
-        .chart-container {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-            margin-bottom: 40px;
-            position: relative;
-        }
-
-        .chart-legend {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
-
-        .legend-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.9em;
-            font-weight: 500;
-        }
-
-        .legend-color {
-            width: 12px;
-            height: 12px;
-            border-radius: 2px;
-        }
-
-        .chart-wrapper {
-            display: flex;
-            align-items: end;
-            gap: 20px;
-            min-height: 400px;
-            position: relative;
-        }
-
-        .chart-bars {
-            display: flex;
-            gap: 40px;
-            align-items: end;
-            flex: 1;
-            justify-content: center;
-        }
-
-        .year-column {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
             gap: 15px;
-            flex: 1;
-            max-width: 120px;
+            margin-bottom: 60px;
         }
 
-        .year-label {
-            font-weight: 600;
-            color: #1a1a2e;
-            font-size: 1.1em;
-        }
-
-        .bar-stack {
-            width: 80px;
-            height: 300px;
-            position: relative;
-            border-radius: 8px 8px 0 0;
+        .year-item {
+            background: white;
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .year-item:hover {
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        .year-header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .year-header:hover {
+            background: linear-gradient(135deg, #2a2a3e 0%, #262a4e 100%);
+        }
+
+        .year-header h3 {
+            margin: 0;
+            font-size: 1.4em;
+            font-weight: 600;
+        }
+
+        .year-toggle {
+            font-size: 1.5em;
+            font-weight: bold;
             transition: transform 0.3s ease;
         }
 
-        .bar-stack:hover {
-            transform: scale(1.05);
+        .year-item.active .year-toggle {
+            transform: rotate(180deg);
         }
 
-        .bar-segment {
-            position: absolute;
-            left: 0;
-            right: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            color: white;
-            font-weight: 600;
-            font-size: 0.8em;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+        .year-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
         }
 
-        .bar-segment.killed {
-            background: #8B0000;
-            bottom: 0;
+        .year-item.active .year-content {
+            max-height: 2000px;
+            overflow: visible;
         }
 
-        .bar-segment.missing {
-            background: #696969;
+        .year-description {
+            padding: 25px 30px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e9ecef;
         }
 
-        .bar-segment.wounded {
-            background: #FF6B35;
+        .year-description p {
+            margin: 0;
+            line-height: 1.6;
+            color: #495057;
+            font-size: 1em;
         }
 
-        .bar-segment .segment-value {
-            transform: rotate(-90deg);
-            white-space: nowrap;
+        .year-infographics {
+            padding: 30px;
         }
 
-        .chart-axis {
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 60px;
-            border-right: 2px solid #e9ecef;
-        }
-
-        .y-axis {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: 300px;
-            padding-right: 10px;
-            text-align: right;
-        }
-
-        .axis-label {
-            font-size: 0.8em;
-            color: #666;
-        }
-
-        .dynamics-insights {
-            display: flex;
-            flex-direction: column;
+        .infographic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
         }
 
-        .insight {
+        .infographic-card {
             background: white;
+            border-radius: 12px;
             padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            border-left: 4px solid #ff6b35;
-            opacity: 0.5;
-            transition: all 0.3s ease;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+            border: 1px solid #e9ecef;
+            transition: transform 0.3s ease;
         }
 
-        .insight.active {
-            opacity: 1;
-            transform: translateX(10px);
+        .infographic-card:hover {
+            transform: translateY(-3px);
         }
 
-        .insight h3 {
+        .infographic-data {
+            text-align: center;
+        }
+
+        .infographic-number {
+            font-size: 2em;
+            font-weight: 700;
             color: #1a1a2e;
             margin-bottom: 10px;
-            font-size: 1.2em;
         }
 
-        .insight p {
-            line-height: 1.6;
+        .infographic-label {
+            font-size: 0.9em;
             color: #666;
-            margin: 0;
+            margin-bottom: 8px;
+            line-height: 1.4;
         }
 
-        @media (max-width: 968px) {
-            .dynamics-controls {
-                flex-direction: column;
-                gap: 20px;
-            }
-            
-            .chart-bars {
-                gap: 20px;
-            }
-            
-            .year-column {
-                max-width: 80px;
-            }
-            
-            .bar-stack {
-                width: 60px;
-            }
+        .infographic-percent {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #ff6b35;
+        }
+
+        .year-medicine-development {
+            padding: 25px 30px;
+            background: #fff3cd;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .year-medicine-development h4 {
+            margin: 0 0 15px 0;
+            color: #856404;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+
+        .year-medicine-development p {
+            margin: 0;
+            color: #856404;
+            line-height: 1.6;
+            font-size: 0.95em;
         }
 
         @media (max-width: 768px) {
-            .chart-container {
+            .year-header {
+                padding: 15px 20px;
+            }
+
+            .year-header h3 {
+                font-size: 1.2em;
+            }
+
+            .year-description {
                 padding: 20px;
             }
-            
-            .chart-bars {
-                gap: 10px;
+
+            .year-infographics {
+                padding: 20px;
             }
-            
-            .year-column {
-                max-width: 60px;
+
+            .infographic-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
             }
-            
-            .bar-stack {
-                width: 45px;
+
+            .infographic-card {
+                padding: 20px;
             }
-            
-            .bar-segment .segment-value {
-                font-size: 0.7em;
+
+            .infographic-number {
+                font-size: 1.8em;
             }
         }
         </style>

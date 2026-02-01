@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Test</title>
+    <style>
+        body { font-family: Arial; margin: 20px; }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h1>Simple Data Test</h1>
+    <div id="info"></div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Название</th>
+                <th>Тип</th>
+                <th>Дней</th>
+                <th>Потерь</th>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+            <tr><td colspan="4">Loading...</td></tr>
+        </tbody>
+    </table>
+
+    <script>
+        // Simple hardcoded data test
+        const testData = [
+            { name: "1-ый Дальневосточный фронт", type: "front", days: 25, totalLosses: 21069 },
+            { name: "14-ая отдельная армия", type: "front", days: 176, totalLosses: 8672 },
+            { name: "Балтийский флот", type: "fleet", days: 1418, totalLosses: 91592 }
+        ];
+
+        document.getElementById('info').textContent = 'Testing with ' + testData.length + ' hardcoded items';
+
+        const tbody = document.getElementById('tbody');
+        tbody.innerHTML = '';
+
+        testData.forEach(item => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${item.name}</td>
+                <td>${item.type}</td>
+                <td>${item.days}</td>
+                <td>${item.totalLosses}</td>
+            `;
+            tbody.appendChild(row);
+        });
+
+        document.getElementById('info').textContent += ' - Table populated successfully!';
+    </script>
+</body>
+</html>

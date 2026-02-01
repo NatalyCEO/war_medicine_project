@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chart Heights Test</title>
+    <style>
+        .test-chart {
+            display: flex;
+            align-items: end;
+            gap: 10px;
+            height: 300px;
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin: 20px;
+        }
+
+        .test-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            flex: 1;
+        }
+
+        .test-bar {
+            background: blue;
+            border-radius: 4px 4px 0 0;
+            min-height: 1px;
+            width: 40px;
+        }
+
+        .test-label {
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Chart Heights Test</h1>
+
+    <h2>Wounded (Ranenye)</h2>
+    <div class="test-chart" id="wounded-chart"></div>
+
+    <h2>Killed (Ubitye)</h2>
+    <div class="test-chart" id="killed-chart"></div>
+
+    <script>
+        const data = [
+            { year: 1941, wounded: 1112892, killed: 391359 },
+            { year: 1942, wounded: 3318974, killed: 1304277 },
+            { year: 1943, wounded: 4601745, killed: 1559962 },
+            { year: 1944, wounded: 3966814, killed: 1204170 },
+            { year: 1945, wounded: 1844973, killed: 559417 }
+        ];
+
+        function createChart(containerId, typeKey, color) {
+            const container = document.getElementById(containerId);
+            const maxValue = Math.max(...data.map(d => d[typeKey]));
+
+            data.forEach(item => {
+                const column = document.createElement('div');
+                column.className = 'test-column';
+
+                const heightPercent = (item[typeKey] / maxValue) * 100;
+
+                column.innerHTML = `
+                    <div class="test-bar" style="height: ${heightPercent}%; background-color: ${color};"></div>
+                    <div class="test-label">${item.year}</div>
+                    <div class="test-label">${item[typeKey].toLocaleString()}</div>
+                `;
+
+                container.appendChild(column);
+            });
+        }
+
+        createChart('wounded-chart', 'wounded', 'orange');
+        createChart('killed-chart', 'killed', 'red');
+    </script>
+</body>
+</html>

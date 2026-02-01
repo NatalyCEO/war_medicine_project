@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test</title>
+</head>
+<body>
+    <h1>Test CSV Loading</h1>
+    <div id="result"></div>
+    <script src="js/csv-data-loader.js"></script>
+    <script>
+        async function test() {
+            const result = document.getElementById('result');
+            result.innerHTML = 'Loading...';
+
+            try {
+                if (typeof CSVDataLoader === 'undefined') {
+                    result.innerHTML = 'CSVDataLoader not loaded';
+                    return;
+                }
+
+                const loader = new CSVDataLoader();
+                const data = await loader.loadAllData();
+
+                result.innerHTML = `Loaded ${data.length} units<br>`;
+                data.slice(0, 3).forEach((unit, i) => {
+                    result.innerHTML += `${i + 1}: ${unit.name} (${unit.type})<br>`;
+                });
+            } catch (error) {
+                result.innerHTML = `Error: ${error.message}`;
+            }
+        }
+
+        test();
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Scripts</title>
+</head>
+<body>
+    <h1>Testing Script Loading</h1>
+    <div id="log"></div>
+
+    <script>
+        const log = document.getElementById('log');
+        function addLog(msg) {
+            log.innerHTML += msg + '<br>';
+            console.log(msg);
+        }
+    </script>
+
+    <script src="js/data-processor.js"></script>
+    <script>
+        addLog('data-processor.js loaded successfully');
+    </script>
+
+    <script src="js/csv-data-loader.js"></script>
+    <script>
+        addLog('csv-data-loader.js loaded successfully');
+        if (typeof CSVDataLoader !== 'undefined') {
+            addLog('CSVDataLoader class is available');
+        } else {
+            addLog('ERROR: CSVDataLoader class not found');
+        }
+    </script>
+
+    <script src="js/table.js"></script>
+    <script>
+        addLog('table.js loaded successfully');
+        if (typeof DataTable !== 'undefined') {
+            addLog('DataTable class is available');
+        } else {
+            addLog('ERROR: DataTable class not found');
+        }
+    </script>
+</body>
+</html>

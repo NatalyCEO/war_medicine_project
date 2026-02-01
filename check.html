@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Check Data Loading</title>
+</head>
+<body>
+    <h1>Проверка загрузки данных</h1>
+    <div id="result"></div>
+
+    <script src="js/csv-data-loader.js"></script>
+    <script>
+        async function checkData() {
+            const result = document.getElementById('result');
+            result.innerHTML = 'Проверяем загрузку данных...<br>';
+
+            try {
+                if (typeof CSVDataLoader === 'undefined') {
+                    result.innerHTML += '❌ CSVDataLoader не найден<br>';
+                    return;
+                }
+
+                result.innerHTML += '✅ CSVDataLoader найден<br>';
+
+                const loader = new CSVDataLoader();
+                result.innerHTML += '✅ Экземпляр CSVDataLoader создан<br>';
+
+                const data = await loader.loadAllData();
+                result.innerHTML += `✅ Данные загружены: ${data.length} записей<br>`;
+
+                if (data.length > 0) {
+                    result.innerHTML += `📊 Первая запись: ${data[0].name} (${data[0].type}) - ${data[0].totalLosses} потерь<br>`;
+                    result.innerHTML += `📊 Последняя запись: ${data[data.length-1].name} (${data[data.length-1].type})<br>`;
+                }
+
+                result.innerHTML += '🎉 Загрузка данных работает корректно!';
+
+            } catch (error) {
+                result.innerHTML += `❌ Ошибка: ${error.message}<br>`;
+                console.error(error);
+            }
+        }
+
+        // Запуск проверки
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', checkData);
+        } else {
+            checkData();
+        }
+    </script>
+</body>
+</html>
